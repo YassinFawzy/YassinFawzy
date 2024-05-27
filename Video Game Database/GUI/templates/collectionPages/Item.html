@@ -1,0 +1,141 @@
+{% extends "section.html" %}
+{% block page_title %}Item{% endblock %}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Items</option>
+            <option value="item_name">Item Name</option>
+            <option value="quest_item">Quest Item</option>
+            <option value="used_in_crafting">Used in Crafting</option>
+            <option value="craftable">Craftable</option>
+            <option value="recipe">Recipe</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="item_name">Item Name</option>
+    <option value="quest_item">Quest Item</option>
+    <option value="used_in_crafting">Used in Crafting</option>
+    <option value="craftable">Craftable</option>
+    <option value="recipe">Recipe</option>
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Item Name:</span>{{item["item_name"]}}</p>
+    <p><span>Quest Item:</span>{{item["quest_item"]}}</p>
+    <p><span>Used in Crafting:</span>{{item["used_in_crafting"]}}</p>
+    <p><span>Craftbale:</span>{{item["craftable"]}}</p>
+    <p><span>Recipe:</span>{{item["recipe"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+    <h1 class="subtitle">All Items</h1>
+{%endblock%}
+{% block content_1 %}
+    {%for Item in aItem:%}
+    <div class="item-card">
+        <h1>{{Item["item_name"]}}</h1>
+        <div class="item-skills">
+            <h3> <div class="quest-img stat-image"></div> Quest Item: {{Item["quest_item"]}} </h3>
+            <h3> <div class="ucraft-img stat-image"></div> Used to Craft: {{Item["used_in_crafting"]}} </h3>
+            <h3> <div class="crafting-img stat-image"></div> Craftable: {{Item["craftable"]}} </h3>
+        </div>
+        <div class="item-recipe">
+            <div class="recipe-img stat-image"></div>
+            <h3>Recipe: {{Item["recipe"]}} </h3>
+        </div>            
+    </div>
+    {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+    <h1 class="subtitle">Quest Items</h1>
+{%endblock%}
+{% block content_2 %}
+    {%for Item in qItem:%}
+    <div class="item-card">
+        <h1>{{Item["item_name"]}}</h1>
+        <div class="item-skills">
+            <h3> <div class="quest-img stat-image"></div> Quest Item: {{Item["quest_item"]}} </h3>
+            <h3> <div class="ucraft-img stat-image"></div> Used to Craft: {{Item["used_in_crafting"]}} </h3>
+            <h3> <div class="crafting-img stat-image"></div> Craftable: {{Item["craftable"]}} </h3>
+        </div>
+        <div class="item-recipe">
+            <div class="recipe-img stat-image"></div>
+            <h3>Recipe: {{Item["recipe"]}} </h3>
+        </div>            
+    </div>
+    {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+    <h1 class="subtitle">Items Used in Crafting</h1>
+{%endblock%}
+{% block content_3 %}
+    {%for Item in uItem:%}
+    <div class="item-card">
+        <h1>{{Item["item_name"]}}</h1>
+        <div class="item-skills">
+            <h3> <div class="quest-img stat-image"></div> Quest Item: {{Item["quest_item"]}} </h3>
+            <h3> <div class="ucraft-img stat-image"></div> Used to Craft: {{Item["used_in_crafting"]}} </h3>
+            <h3> <div class="crafting-img stat-image"></div> Craftable: {{Item["craftable"]}} </h3>
+        </div>
+        <div class="item-recipe">
+            <div class="recipe-img stat-image"></div>
+            <h3>Recipe: {{Item["recipe"]}} </h3>
+        </div>            
+    </div>
+    {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+    <h1 class="subtitle">Craftable Items</h1>
+{%endblock%}
+{% block content_4 %}
+    {%for Item in cItem:%}
+    <div class="item-card">
+        <h1>{{Item["item_name"]}}</h1>
+        <div class="item-skills">
+            <h3> <div class="quest-img stat-image"></div> Quest Item: {{Item["quest_item"]}} </h3>
+            <h3> <div class="ucraft-img stat-image"></div> Used to Craft: {{Item["used_in_crafting"]}} </h3>
+            <h3> <div class="crafting-img stat-image"></div> Craftable: {{Item["craftable"]}} </h3>
+        </div>
+        <div class="item-recipe">
+            <div class="recipe-img stat-image"></div>
+            <h3>Recipe: {{Item["recipe"]}} </h3>
+        </div>            
+    </div>
+    {%endfor%}
+{%endblock%}
+

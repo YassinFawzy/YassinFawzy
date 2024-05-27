@@ -1,0 +1,138 @@
+{% extends "section.html" %}
+{% block page_title %}Map Locations{% endblock %}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Locations</option>
+            <option value="location_name">Location Name</option>
+            <option value="region">Region</option>
+            <option value="has_savepoint">Has Savepoint</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="location_name">Location Name</option>
+    <option value="region">Region</option>
+    <option value="has_savepoint">Has Savepoint</option>
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Location Name:</span>{{item["location_name"]}}</p>
+    <p><span>Region:</span>{{item["region"]}}</p>
+    <p><span>Savepoint?:</span>{{item["has_savepoint"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+    <h1 class="subtitle"> <div class="forest-img" style="height: 40px; width: 40px; margin-right: 5px;"></div> Enchanted Forest</h1>
+{%endblock%}
+{% block content_1 %}
+{%for location in gLocation:%}
+        <div class="location-card">
+            <h1>{{location["location_name"]}}</h1>
+            <div class="location-skills">
+                <h3> <div class="save-img stat-image"></div> Savepoint: {{location["has_savepoint"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+    <h1 class="subtitle"> <div class="island-img" style="height: 40px; width: 40px; margin-right: 5px;"></div> Mystical Archipelago</h1>
+{%endblock%}
+{% block content_2 %}
+{%for location in wLocation:%}
+        <div class="location-card">
+            <h1>{{location["location_name"]}}</h1>
+            <div class="location-skills">
+                <h3> <div class="save-img stat-image"></div> Savepoint: {{location["has_savepoint"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+    <h1 class="subtitle"> <div class="volcano-img" style="height: 40px; width: 40px; margin-right: 5px;"></div> Volcanic Wastelands</h1>
+{%endblock%}
+{% block content_3 %}
+{%for location in vLocation:%}
+        <div class="location-card">
+            <h1>{{location["location_name"]}}</h1>
+            <div class="location-skills">
+                <h3> <div class="save-img stat-image"></div> Savepoint: {{location["has_savepoint"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+    <h1 class="subtitle"> <div class="ice-img" style="height: 40px; width: 40px; margin-right: 5px;"></div> Icy Bay</h1>
+{%endblock%}
+{% block content_4 %}
+{%for location in iLocation:%}
+        <div class="location-card">
+            <h1>{{location["location_name"]}}</h1>
+            <div class="location-skills">
+                <h3> <div class="save-img stat-image"></div> Savepoint: {{location["has_savepoint"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_5%}
+    <h1 class="subtitle"> <div class="desert-img" style="height: 40px; width: 40px; margin-right: 5px;"></div> Silent Desert</h1>
+{%endblock%}
+{% block content_5 %}
+{%for location in dLocation:%}
+        <div class="location-card">
+            <h1>{{location["location_name"]}}</h1>
+            <div class="location-skills">
+                <h3> <div class="save-img stat-image"></div> Savepoint: {{location["has_savepoint"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_6%}
+    <h1 class="subtitle"> <div class="rift-img" style="height: 40px; width: 40px; margin-right: 5px;"></div> Astral Rift</h1>
+{%endblock%}
+{% block content_6 %}
+{%for location in fLocation:%}
+        <div class="location-card">
+            <h1>{{location["location_name"]}}</h1>
+            <div class="location-skills">
+                <h3> <div class="save-img stat-image"></div> Savepoint: {{location["has_savepoint"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}

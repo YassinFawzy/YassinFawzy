@@ -1,0 +1,129 @@
+{% extends "section.html" %}
+{% block page_title %}Consumable{% endblock %}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Consumables</option>
+            <option value="consumable_name">Consumable Name</option>
+            <option value="type">Type</option>
+            <option value="level">Level</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="consumable_name">Consumable Name</option>
+    <option value="type">Type</option>
+    <option value="level">Level</option>
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Consumable Name:</span>{{item["consumable_name"]}}</p>
+    <p><span>Type:</span>{{item["type"]}}</p>
+    <p><span>Level:</span>{{item["level"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+    <h1 class="subtitle">Stat Up Consumables</h1>
+{%endblock%}
+{% block content_1 %}
+{%for consumable in sConsumable:%}
+        <div class="consumable-card">
+            <h1>{{consumable["consumable_name"]}}</h1>
+            <div class="consumable-skills">
+                <h3> <div class="statup-img stat-image"></div> Type: {{consumable["type"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{consumable["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+    <h1 class="subtitle">Resistance Consumables</h1>
+{%endblock%}
+{% block content_2 %}
+{%for consumable in rConsumable:%}
+        <div class="consumable-card">
+            <h1>{{consumable["consumable_name"]}}</h1>
+            <div class="consumable-skills">
+                <h3> <div class="resistance-img stat-image"></div> Type: {{consumable["type"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{consumable["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+    <h1 class="subtitle">Resurrection Consumables</h1>
+{%endblock%}
+{% block content_3 %}
+{%for consumable in resrConsumable:%}
+        <div class="consumable-card">
+            <h1>{{consumable["consumable_name"]}}</h1>
+            <div class="consumable-skills">
+                <h3> <div class="res-img stat-image"></div> Type: {{consumable["type"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{consumable["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+    <h1 class="subtitle">Regeneration Consumables</h1>
+{%endblock%}
+{% block content_4 %}
+{%for consumable in regConsumable:%}
+        <div class="consumable-card">
+            <h1>{{consumable["consumable_name"]}}</h1>
+            <div class="consumable-skills">
+                <h3> <div class="regen-img stat-image"></div> Type: {{consumable["type"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{consumable["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_5%}
+    <h1 class="subtitle">Tactical Consumables</h1>
+{%endblock%}
+{% block content_5 %}
+{%for consumable in tConsumable:%}
+        <div class="consumable-card">
+            <h1>{{consumable["consumable_name"]}}</h1>
+            <div class="consumable-skills">
+                <h3> <div class="tact-img stat-image"></div> Type: {{consumable["type"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{consumable["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}

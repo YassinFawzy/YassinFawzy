@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='css/index.css')}}">
+        <title>Video Game Database</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="database-result">
+                <div class="database-result-title">
+                    <p>3ashwa2a Game Database</p>
+                </div>
+                <div class="qb">
+                    <a href="/insert" class="home-button">Insert</a>
+                </div>
+
+            <div class="database-content">
+                <a class="collection" href="/player">
+                    <h1 class="collection-title">Player</h1>
+                    <div class="player-image collection-image"></div>
+                </a>
+                <a class="collection" href="/weapon">
+                    <h1 class="collection-title">Weapons</h1>
+                    <div class="weapon-image collection-image"></div>
+                </a>
+                <a class="collection" href="/armor">
+                    <h1 class="collection-title">Armor</h1>
+                    <div class="armor-image collection-image"></div>
+                </a>
+                <a class="collection" href="/consumable">
+                    <h1 class="collection-title">Consumables</h1>
+                    <div class="consumable-image collection-image"></div>
+                </a>
+                <a class="collection" href="/item">
+                    <h1 class="collection-title">Items</h1>
+                    <div class="item-image collection-image"></div>
+                </a>
+                <a class="collection" href="/location">
+                    <h1 class="collection-title">Locations</h1>
+                    <div class="location-image collection-image"></div>
+                </a>
+                <a class="collection" href="/skill">
+                    <h1 class="collection-title">Skills</h1>
+                    <div class="skill-image collection-image"></div>
+                </a>
+                <a class="collection" href="/mission">
+                    <h1 class="collection-title">Missions</h1>
+                    <div class="mission-image collection-image"></div>
+                </a>
+            </div>
+        </div>
+        
+    </div>
+    </body>
+</html>

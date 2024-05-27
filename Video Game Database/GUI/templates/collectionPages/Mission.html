@@ -1,0 +1,87 @@
+{% extends "section.html" %}
+{% block page_title %}Missions{%endblock%}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Skills</option>
+            <option value="mission_name">Mission Name</option>
+            <option value="main_mission">Main Mission</option>
+            <option value="prerequisite_mission">Prerequisites Missions</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="mission_name">Mission Name</option>
+    <option value="main_mission">Main Mission</option>
+    <option value="prerequisite_mission">Prerequisites Missions</option>
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Mission Name:</span>{{item["mission_name"]}}</p>
+    <p><span>Main Mission:</span>{{item["main_mission"]}}</p>
+    <p><span>Prerequisites:</span>{{item["prerequisite_mission"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+    <h1 class="subtitle">Main Missions</h1>
+{%endblock%}
+{% block content_1 %}
+{%for mission in mMission:%}
+        <div class="mission-card">
+        <h1>{{mission["mission_name"]}}</h1>
+        <div class="mission-recipe">
+            <div class="requisite-img stat-image"></div>
+            <h3>Prerequisite missions:</h3>
+            <h3>{{mission["prerequisite_mission"]}} </h3>
+        </div>              
+    </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+    <h1 class="subtitle">Side Quests</h1>
+{%endblock%}
+{% block content_2 %}
+{%for mission in sMission:%}
+        <div class="mission-card">
+        <h1>{{mission["mission_name"]}}</h1>
+        <div class="mission-recipe">
+            <div class="requisite-img stat-image"></div>
+            <h3>Prerequisite missions:</h3>
+            <h3>{{mission["prerequisite_mission"]}} </h3>
+        </div>              
+    </div>
+        {%endfor%}
+{%endblock%}
+

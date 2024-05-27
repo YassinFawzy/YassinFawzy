@@ -1,0 +1,131 @@
+{% extends "section.html" %}
+{% block page_title %}Weapons{% endblock %}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Weapons</option>
+            <option value="weapon_name">Weapon Name</option>
+            <option value="damage">Damage</option>
+            <option value="level">Weapon Level</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="weapon_name">Weapon Name</option>
+    <option value="damage">Damage</option>
+    <option value="level">Weapon Level</option>
+    
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Weapon Name:</span>{{item["weapon_name"]}}</p>
+    <p><span>Damage:</span>{{item["damage"]}}</p>
+    <p><span>Level:</span>{{item["level"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+    <h1 class="subtitle">S-Tier Weapons</h1>
+{%endblock%}
+{% block content_1 %}
+{%for weapon in sWeapon:%}
+        <div class="weapon-card">
+            <h1>{{weapon["weapon_name"]}}</h1>
+            <div class="weapon-skills">
+                <h3> <div class="damage-img stat-image"></div> Damage: {{weapon["damage"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{weapon["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+    <h1 class="subtitle">A-Tier Weapons</h1>
+{%endblock%}
+{% block content_2 %}
+{%for weapon in aWeapon:%}
+        <div class="weapon-card">
+            <h1>{{weapon["weapon_name"]}}</h1>
+            <div class="weapon-skills">
+                <h3> <div class="damage-img stat-image"></div> Damage: {{weapon["damage"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{weapon["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+    <h1 class="subtitle">B-Tier Weapons</h1>
+{%endblock%}
+{% block content_3 %}
+{%for weapon in bWeapon:%}
+        <div class="weapon-card">
+            <h1>{{weapon["weapon_name"]}}</h1>
+            <div class="weapon-skills">
+                <h3> <div class="damage-img stat-image"></div> Damage: {{weapon["damage"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{weapon["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+    <h1 class="subtitle">C-Tier Weapons</h1>
+{%endblock%}
+{% block content_4 %}
+{%for weapon in cWeapon:%}
+        <div class="weapon-card">
+            <h1>{{weapon["weapon_name"]}}</h1>
+            <div class="weapon-skills">
+                <h3> <div class="damage-img stat-image"></div> Damage: {{weapon["damage"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{weapon["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_5%}
+    <h1 class="subtitle">F-Tier Weapons</h1>
+{%endblock%}
+{% block content_5 %}
+{%for weapon in fWeapon:%}
+        <div class="weapon-card">
+            <h1>{{weapon["weapon_name"]}}</h1>
+            <div class="weapon-skills">
+                <h3> <div class="damage-img stat-image"></div> Damage: {{weapon["damage"]}} </h3>
+                <h3> <div class="level-img stat-image"></div> Level: {{weapon["level"]}} </h3>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+

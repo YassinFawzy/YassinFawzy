@@ -1,0 +1,162 @@
+{% extends "section.html" %}
+{% block page_title %}Skills{%endblock%}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Skills</option>
+            <option value="skill_name">Skill Name</option>
+            <option value="category">category</option>
+            <option value="prerequisite_skills">Prerequisites Skills</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="skill_name">Skill Name</option>
+    <option value="category">category</option>
+    <option value="prerequisite_skills">Prerequisites Skills</option>
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Skill Name:</span>{{item["skill_name"]}}</p>
+    <p><span>Category:</span>{{item["category"]}}</p>
+    <p><span>Prerequisites:</span>{{item["prerequisite_skills"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+<h1 class="subtitle"> <div class="ult-img"
+        style="height: 40px; width: 40px; margin-right: 5px;"></div>Ultimate
+    Skills </h1>
+{%endblock%}
+{% block content_1 %}
+{%for skill in uSkill:%}
+<div class="skill-card">
+    <h1>{{skill["skill_name"]}}</h1>
+    <div class="skill-recipe">
+        <div class="requisite-img stat-image"></div>
+        <h3>Prerequisite Skills:</h3>
+        <h3>{{skill["prerequisite_skills"]}} </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+<h1 class="subtitle"> <div class="aoe-img"
+        style="height: 40px; width: 40px; margin-right: 5px;"></div>Area Of
+    Effect Skills</h1>
+{%endblock%}
+{% block content_2 %}
+{%for skill in aoeSkill:%}
+<div class="skill-card">
+    <h1>{{skill["skill_name"]}}</h1>
+    <div class="skill-recipe">
+        <div class="requisite-img stat-image"></div>
+        <h3>Prerequisite Skills:</h3>
+        <h3>{{skill["prerequisite_skills"]}} </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+<h1 class="subtitle"> <div class="attack-img"
+        style="height: 40px; width: 40px; margin-right: 5px;"></div>Attacking
+    Skills</h1>
+{%endblock%}
+{% block content_3 %}
+{%for skill in attSkill:%}
+<div class="skill-card">
+    <h1>{{skill["skill_name"]}}</h1>
+    <div class="skill-recipe">
+        <div class="requisite-img stat-image"></div>
+        <h3>Prerequisite Skills:</h3>
+        <h3>{{skill["prerequisite_skills"]}} </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+<h1 class="subtitle"> <div class="defense-img"
+        style="height: 40px; width: 40px; margin-right: 5px;"></div>Defensive
+    Skills</h1>
+{%endblock%}
+{% block content_4 %}
+{%for skill in defSkill:%}
+<div class="skill-card">
+    <h1>{{skill["skill_name"]}}</h1>
+    <div class="skill-recipe">
+        <div class="requisite-img stat-image"></div>
+        <h3>Prerequisite Skills:</h3>
+        <h3>{{skill["prerequisite_skills"]}} </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_5%}
+<h1 class="subtitle"> <div class="movement-img"
+        style="height: 40px; width: 40px; margin-right: 5px;"></div>Movement
+    Skills</h1>
+{%endblock%}
+{% block content_5 %}
+{%for skill in movSkill:%}
+<div class="skill-card">
+    <h1>{{skill["skill_name"]}}</h1>
+    <div class="skill-recipe">
+        <div class="requisite-img stat-image"></div>
+        <h3>Prerequisite Skills:</h3>
+        <h3>{{skill["prerequisite_skills"]}} </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_6%}
+<h1 class="subtitle"> <div class="trap-img"
+        style="height: 40px; width: 40px; margin-right: 5px;"></div>Trap
+    Skills</h1>
+{%endblock%}
+{% block content_6 %}
+{%for skill in trapSkill:%}
+<div class="skill-card">
+    <h1>{{skill["skill_name"]}}</h1>
+    <div class="skill-recipe">
+        <div class="requisite-img stat-image"></div>
+        <h3>Prerequisite Skills:</h3>
+        <h3>{{skill["prerequisite_skills"]}} </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}

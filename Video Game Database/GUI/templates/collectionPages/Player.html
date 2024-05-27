@@ -1,0 +1,227 @@
+{% extends "section.html" %}
+{% block page_title %}Players{% endblock %}
+
+{%block findBlock%}
+    
+    <div class="find-query">
+        <div class="dropdown-section">
+            <label for="dropdown"class="search-label" >Search:</label>
+                <select name="searchby-dropdown" id="dropdown">
+                <option value="All">All Players</option>
+                <option value="username">Username</option>
+                <option value="inventory.equipped.weapon">Equipped Weapon</option>
+                <option value="inventory.equipped.skill">Equipped Skill</option>
+                <option value="inventory.equipped.consumable">Equipped Consumable</option>
+                <option value="inventory.equipped.head">Equipped Helmet</option>
+                <option value="inventory.equipped.torso">Equipped Chestplate</option>
+                <option value="inventory.equipped.arms">Equipped Arms</option>
+                <option value="inventory.equipped.legs">Equipped Leggings</option>
+                <option value="inventory.equipped.feet">Equipped Boots</option>
+                <option value="inventory.backpack">Backpack</option>
+                <option value="health">Health Points</option>
+                <option value="stamina">Stamina Points</option>
+                <option value="armor">Armor Points</option>
+                <option value="mastery.weapon">Weapon Mastery</option>
+                <option value="mastery.skill">Skill Mastery</option>    
+                <option value="savepoint.location">Savepoint Location</option>    
+                <option value="savepoint.date">Date Created</option>    
+            </select>
+        </div>
+        <div class="range-section">
+            <label for="range" class="search-label">Comparators:</label>
+            <select name="range" id="dropdown">
+                <option value="None">None</option>
+                <option value="$gte"> Greater or = </option>
+                <option value="$gt">Greater than</option>
+                <option value="$lte">Less or = </option>
+                <option value="$lt">Less than </option>
+            </select>
+        </div>
+    </div>
+
+    <input type="text" name="lookup" class="lookup">
+    
+    <label for="sort" class="search-label" >Sort By: </label>
+    <select name="sort" id="dropdown">
+        <option value="none">None</option>
+        <option value="username">Username</option>
+        <option value="inventory.equipped.weapon">Equipped Weapon</option>
+        <option value="inventory.equipped.skill">Equipped Skill</option>
+        <option value="inventory.equipped.consumable">Equipped Consumable</option>
+        <option value="inventory.equipped.head">Equipped Helmet</option>
+        <option value="inventory.equipped.torso">Equipped Chestplate</option>
+        <option value="inventory.equipped.arms">Equipped Arms</option>
+        <option value="inventory.equipped.legs">Equipped Leggings</option>
+        <option value="inventory.equipped.feet">Equipped Boots</option>
+        <option value="inventory.backpack">Backpack</option>
+        <option value="health">Health Points</option>
+        <option value="stamina">Stamina Points</option>
+        <option value="armor">Armor Points</option>
+        <option value="mastery.weapon">Weapon Mastery</option>
+        <option value="mastery.skill">Skill Mastery</option>    
+        <option value="savepoint.location">Savepoint Location</option>    
+        <option value="savepoint.date">Date Created</option>   
+    </select>
+    <label for="sad" style="margin-top: 20px;">Order: </label>
+    <select name="sad" id="dropdown">
+        <option value="1">Ascending</option>
+        <option value="-1">Descending</option>
+    </select>
+
+{%endblock%}
+
+{%block found%}
+    {%for item in a:%}
+        <div class="found-card">
+            <p><span>Username:</span>{{item["username"]}}</p>
+            <p><span>Weapon:</span>{{item["inventory"]["equipped"]["weapon"]}}</p>
+            <p><span>Skill:</span>{{item["inventory"]["equipped"]["skill"]}}</p>
+            <p><span>Consumable:</span>{{item["inventory"]["equipped"]["consumable"]}}</p>
+            <p><span>Helmet:</span>{{item["inventory"]["equipped"]["head"]}}</p>
+            <p><span>Chestplate:</span>{{item["inventory"]["equipped"]["torso"]}}</p>
+            <p><span>Arms:</span>{{item["inventory"]["equipped"]["arms"]}}</p>
+            <p><span>Leggings:</span>{{item["inventory"]["equipped"]["legs"]}}</p>
+            <p><span>Boots:</span>{{item["inventory"]["equipped"]["feet"]}}</p>
+            <p><span>Backpack:</span>{{item["inventory"]["backpack"]}}</p>
+            <p><span>Health:</span>{{item["health"]}}</p>
+            <p><span>Stamina:</span>{{item["stamina"]}}</p>
+            <p><span>Armor:</span>{{item["armor"]}}</p>
+            <p><span>Weapon Mastery:</span>{{item["mastery"]["weapon"]}}</p>
+            <p><span>Skill Mastery:</span>{{item["mastery"]["skill"]}}</p>
+            <p><span>Savepoint:</span>{{item["savepoint"]["location"]}}</p>
+            <p><span>Date Created: </span>{{item["savepoint"]["date"]}}</p>
+        </div>
+    {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+    <h1 class="subtitle">S-Tier Players</h1>
+{%endblock%}
+{% block content_1 %}
+{%for player in sPlayer:%}
+        <div class="player-card">
+            <h1>{{player["username"]}}</h1>
+            <div class="skills">
+                <div class="mastery-skills">
+                    <h3> <div class="health-img player-stat-image"></div> Health: {{player["health"]}}</h3>
+                    <h3> <div class="stamina-img player-stat-image"></div> Stamina: {{player["stamina"]}}</h3>
+                    <h3> <div class="armor-image player-stat-image"></div> Armor: {{player["armor"]}}</h3>
+                </div>
+                <div class="mastery-skills">
+                    <h3> <div class="sword-image player-stat-image"></div> Weapon: {{player["inventory"]["equipped"]["weapon"]}}</h3>
+                    <h3> <div class="mastery-image player-stat-image"></div> Mastery: {{player["mastery"]["weapon"]}}</h3>
+                </div>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+    <h1 class="subtitle">A-Tier Players</h1>
+{%endblock%}
+{% block content_2 %}
+{%for player in aPlayer:%}
+        <div class="player-card">
+            <h1>{{player["username"]}}</h1>
+            <div class="skills">
+                <div class="mastery-skills">
+                    <h3><div class="health-img player-stat-image"></div> Health: {{player["health"]}}</h3>
+                    <h3> <div class="stamina-img player-stat-image"></div> Stamina: {{player["stamina"]}}</h3>
+                    <h3> <div class="armor-image player-stat-image"></div> Armor: {{player["armor"]}}</h3>
+                </div>
+                <div class="mastery-skills">
+                    <h3> <div class="sword-image player-stat-image"></div> Weapon: {{player["inventory"]["equipped"]["weapon"]}}</h3>
+                    <h3> <div class="mastery-image player-stat-image"></div> Mastery: {{player["mastery"]["weapon"]}}</h3>
+                </div>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+    <h1 class="subtitle">B-Tier Players</h1>
+{%endblock%}
+{% block content_3%}
+{%for player in bPlayer:%}
+        <div class="player-card">
+            <h1>{{player["username"]}}</h1>
+            <div class="skills">
+                <div class="mastery-skills">
+                    <h3><div class="health-img player-stat-image"></div> Health: {{player["health"]}}</h3>
+                    <h3> <div class="stamina-img player-stat-image"></div> Stamina: {{player["stamina"]}}</h3>
+                    <h3> <div class="armor-image player-stat-image"></div> Armor: {{player["armor"]}}</h3>
+                </div>
+                <div class="mastery-skills">
+                    <h3> <div class="sword-image player-stat-image"></div> Weapon: {{player["inventory"]["equipped"]["weapon"]}}</h3>
+                    <h3> <div class="mastery-image player-stat-image"></div> Mastery: {{player["mastery"]["weapon"]}}</h3>
+                </div>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+    <h1 class="subtitle">C-Tier Players</h1>
+{%endblock%}
+{% block content_4 %}
+{%for player in cPlayer:%}
+        <div class="player-card">
+            <h1>{{player["username"]}}</h1>
+            <div class="skills">
+                <div class="mastery-skills">
+                    <h3><div class="health-img player-stat-image"></div> Health: {{player["health"]}}</h3>
+                    <h3> <div class="stamina-img player-stat-image"></div> Stamina: {{player["stamina"]}}</h3>
+                    <h3> <div class="armor-image player-stat-image"></div> Armor: {{player["armor"]}}</h3>
+                </div>
+                <div class="mastery-skills">
+                    <h3> <div class="sword-image player-stat-image"></div> Weapon: {{player["inventory"]["equipped"]["weapon"]}}</h3>
+                    <h3> <div class="mastery-image player-stat-image"></div> Mastery: {{player["mastery"]["weapon"]}}</h3>
+                </div>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_5%}
+    <h1 class="subtitle">D-Tier Players</h1>
+{%endblock%}
+{% block content_5 %}
+{%for player in dPlayer:%}
+        <div class="player-card">
+            <h1>{{player["username"]}}</h1>
+            <div class="skills">
+            <div class="mastery-skills">
+                <h3><div class="health-img player-stat-image"></div> Health: {{player["health"]}}</h3>
+                <h3> <div class="stamina-img player-stat-image"></div> Stamina: {{player["stamina"]}}</h3>
+                <h3> <div class="armor-image player-stat-image"></div> Armor: {{player["armor"]}}</h3>
+            </div>
+                <div class="mastery-skills">
+                    <h3> <div class="sword-image player-stat-image"></div> Weapon: {{player["inventory"]["equipped"]["weapon"]}}</h3>
+                    <h3> <div class="mastery-image player-stat-image"></div> Mastery: {{player["mastery"]["weapon"]}}</h3>
+                </div>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}
+
+{%block content_subtitle_6%}
+    <h1 class="subtitle">F-Tier Players</h1>
+{%endblock%}
+{% block content_6 %}
+{%for player in fPlayer:%}
+        <div class="player-card">
+            <h1>{{player["username"]}}</h1>
+            <div class="skills">
+                <div class="mastery-skills">
+                    <h3><div class="health-img player-stat-image"></div> Health: {{player["health"]}}</h3>
+                    <h3> <div class="stamina-img player-stat-image"></div> Stamina: {{player["stamina"]}}</h3>
+                    <h3> <div class="armor-image player-stat-image"></div> Armor: {{player["armor"]}}</h3>
+                </div>
+                <div class="mastery-skills">
+                    <h3> <div class="sword-image player-stat-image"></div> Weapon: {{player["inventory"]["equipped"]["weapon"]}}</h3>
+                    <h3> <div class="mastery-image player-stat-image"></div> Mastery: {{player["mastery"]["weapon"]}}</h3>
+                </div>
+            </div>            
+        </div>
+        {%endfor%}
+{%endblock%}

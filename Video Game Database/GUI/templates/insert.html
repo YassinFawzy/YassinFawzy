@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='css/insert.css')}}">
+        <title>Insert Into Database</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <a href="/" class="exit"></a>
+            <form class="chooser-form" action="/insert" method="POST">
+                <input type="hidden" name="insert-collection" value="false">
+
+                <input type="submit" name="selected" value="Player"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Weapon"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Armor"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Consumable"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Item"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Location"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Skill"
+                    class="collection-chooser">
+                <input type="submit" name="selected" value="Mission"
+                    class="collection-chooser">
+            </form>
+
+            <div class="results">
+                <div class="inserting">
+                    <form class="inserting-form" action="/insert" method="POST">
+                        <input type="hidden" name="insert-collection" value="true">
+
+                        {%if cc == "Player":%}
+                        <input type="hidden" name="selected" value="Player">
+
+
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" required>
+
+                        <label for="inventory.equipped.weapon">Equipped Weapon:</label>
+                        <select name="inventory.equipped.weapon" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in weapons:%}
+                            <option value="{{i['weapon_name']}}">{{i['weapon_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.skill">Equipped Skill:</label>
+                        <select name="inventory.equipped.skill" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in skills:%}
+                            <option value="{{i['skill_name']}}">{{i['skill_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.consumable">Equipped Consumable:</label>
+                        <select name="inventory.equipped.consumable" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in consumables:%}
+                            <option value="{{i['consumable_name']}}">{{i['consumable_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.head">Equipped Head:</label>
+                        <select name="inventory.equipped.head" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in head:%}
+                            <option value="{{i['armor_name']}}">{{i['armor_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.torso">Equipped Torso:</label>
+                        <select name="inventory.equipped.torso" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in torso:%}
+                            <option value="{{i['armor_name']}}">{{i['armor_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.arms">Equipped Arms:</label>
+                        <select name="inventory.equipped.arms" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in arms:%}
+                            <option value="{{i['armor_name']}}">{{i['armor_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.legs">Equipped Legs:</label>
+                        <select name="inventory.equipped.legs" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in legs:%}
+                            <option value="{{i['armor_name']}}">{{i['armor_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.equipped.feet">Equipped Feet:</label>
+                        <select name="inventory.equipped.feet" id="dropdown">
+                            <option value="null">null</option>
+                            {%for i in feet:%}
+                            <option value="{{i['armor_name']}}">{{i['armor_name']}}</option>
+                            {%endfor%}
+                        </select>
+                        
+                        <label for="inventory.backpack">Backpack Items(holdown ctrl for multple selections):</label>
+                        <select name="inventory.backpack" id="dropdown" multiple size="3">
+                            <option value="null">null</option>
+                            {%for i in items:%}
+                            <option value="{{i['item_name']}}">{{i['item_name']}}</option>
+                            {%endfor%}
+                        </select>
+
+                        <label for="health">Health:</label>
+                        <input type="number" name="health" required>
+
+                        <label for="stamina">Stamina:</label>
+                        <input type="number" name="stamina" required>
+
+                        <label for="armor">Armor:</label>
+                        <input type="number" name="armor" required>
+
+                        <label for="mastery.weapon">Weapon Mastery:</label>
+                        <input type="number" name="mastery.weapon" required>
+
+                        <label for="mastery.skill">Skill Mastery:</label>
+                        <input type="number" name="mastery.skill" required>
+
+                        <label for="savepoint.location">Savepoint:</label>
+                        <select name="savepoint.location" id="dropdown" required>
+                            {%for i in locations:%}
+                            <option value="{{i['location_name']}}">{{i['location_name']}}</option>
+                            {%endfor%}
+                        </select>
+
+
+                        <input type="submit" name="insert" value="Insert Player">
+
+                        {%elif cc == "Weapon":%}
+                        <input type="hidden" name="selected" value="Weapon">
+
+
+                        <label for="weapon_name">Weapon Name:</label>
+                        <input type="text" name="weapon_name" required>
+
+                        <label for="damage">Damage:</label>
+                        <input type="number" name="damage" required>
+
+                        <label for="level">Level:</label>
+                        <input type="number" name="level" required>
+
+                        <input type="submit" name="insert" value="Insert Weapon">
+
+                        {%elif cc == "Armor":%}
+                        <input type="hidden" name="selected" value="Armor">
+
+                        <label for="armor_name">Armor Name:</label>
+                        <input type="text" name="armor_name" required>
+
+                        <label for="resistance">Resistance:</label>
+                        <input type="number" name="resistance" required>
+
+                        <label for="bodypart">Bodypart:</label>
+                        <select name="bodypart" id="dropdown" required>
+                            <option value="head">Head</option>
+                            <option value="torso">Torso</option>
+                            <option value="arms">Arms</option>
+                            <option value="legs">Legs</option>
+                            <option value="feet">Feet</option>
+                        </select>
+
+                        <label for="level">Level:</label>
+                        <input type="number" name="level" required>
+
+                        <input type="submit" name="insert" value="Insert Armor">
+
+                        {%elif cc == "Consumable":%}
+                        <input type="hidden" name="selected" value="Consumable">
+                        
+                        <label for="consumable_name">Consumable Name:</label>
+                        <input type="text" name="consumable_name" required>
+
+                        <label for="type">Type:</label>
+                        <select name="type" id="dropdown" required>
+                            <option value="regeneration">Regeneration</option>
+                            <option value="resistance">Resistance</option>
+                            <option value="resurrection">Resurrection</option>
+                            <option value="stat up">Stat Up</option>
+                            <option value="tactical">Tactical</option>
+                        </select>
+
+                        <label for="level">Level:</label>
+                        <input type="number" name="level" required>
+
+                        <input type="submit" name="insert" value="Insert Consumable">
+
+                        {%elif cc == "Item":%}
+                        <input type="hidden" name="selected" value="Item">
+
+                        <label for="item_name">Item Name:</label>
+                        <input type="text" name="item_name" required>
+
+                        <label for="quest_item">Quest Item:</label>
+                        <select name="quest_item" id="dropdown">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+
+                        <label for="used_in_crafting">Used to Craft:</label>
+                        <select name="used_in_crafting" id="dropdown">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+
+                        <label for="craftable">Craftable:</label>
+                        <select name="craftable" id="dropdown">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+
+                        <label for="recipe">Prerequisite Missions
+                            (holdown ctrl for multple selections):</label>
+                        <select name="recipe" id="dropdown"
+                            size="3" multiple>
+                            <option value="null">null</option>
+                            {%for i in items:%}
+                            <option
+                                value="{{i['item_name']}}">{{i['item_name']}}</option>
+                            {%endfor%}
+
+                        <input type="submit" name="insert" value="Insert Item">
+
+                        {%elif cc == "Location":%}
+                        <input type="hidden" name="selected" value="Location">
+                        
+                        <label   for="location_name">Location Name:</label>
+                        <input type="text" name="location_name" required>
+
+                        <label for="region">Region:</label>
+                        <select name="region" id="dropdown">
+                            <option value="volcanic wastelands">volcanic
+                                wastelands</option>
+                            <option value="silent desert">silent desert</option>
+                            <option value="icy bay">icy bay</option>
+                            <option value="astral rift">astral rift</option>
+                            <option value="enchanted forest">enchanted
+                                forest</option>
+                            <option value="mystical archipelago">mystical
+                                archipelago</option>
+                        </select>
+
+                        <label for="has_savepoint">Has Savepoint:</label>
+                        <select name="has_savepoint" id="dropdown">
+                            <option value="true">True</option>
+                            <option value="false">False</option>
+                        </select>
+
+                        <input type="submit" name="insert" value="Insert Location">
+
+                        {%elif cc == "Skill":%}
+                        <input type="hidden" name="selected" value="Skill">
+                        
+                        <label   for="skill_name">Skill Name:</label>
+                        <input type="text" name="skill_name" required>
+
+                        <label for="category">Category:</label>
+                        <select name="category" id="dropdown">
+                            <option value="attack">"attack"</option>
+                            <option value="defense">"defense"</option>
+                            <option value="aoe">"aoe"</option>
+                            <option value="trap">"trap"</option>
+                            <option value="movement">"movement"</option>
+                            <option value="ultimate">"ultimate"</option>
+                        </select>
+
+                        <label for="prerequisite_skills">Prerequisite Skills
+                            (holdown ctrl for multple selections):</label>
+                        <select name="prerequisite_skills" id="dropdown"
+                            size="3" multiple>
+                            <option value="null">null</option>
+                            {%for i in skills:%}
+                            <option
+                                value="{{i['skill_name']}}">{{i['skill_name']}}</option>
+                            {%endfor%}
+                        </select>
+
+                        <input type="submit" name="insert" value="Insert Skill">
+
+                        {%elif cc == "Mission":%}
+                        <input type="hidden" name="selected" value="Mission">
+                        
+                        <label for="mission_name">Mission Name:</label>
+                        <input type="text" name="mission_name" required>
+
+                        <label for="prerequisite_skills">Prerequisite Missions
+                            (holdown ctrl for multple selections):</label>
+                        <select name="recipe" id="dropdown"
+                            size="3" multiple>
+                            <option value="null">null</option>
+                            {%for i in missions:%}
+                            <option
+                                value="{{i['mission_name']}}">{{i['mission_name']}}</option>
+                            {%endfor%}
+                        </select>
+
+                        <label for="main_mission">Main Mission:</label>
+                        <input type="text" name="main_mission" value="false"
+                            disabled>
+
+                        <input type="submit" name="insert" value="Insert Mission">
+
+                        {%endif%}
+                    </form>
+                </div>
+                <div class="confirmation">
+                        <p>The query <br> {{query_placed}} <br> has been run</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

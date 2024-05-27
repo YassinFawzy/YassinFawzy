@@ -1,0 +1,160 @@
+{% extends "section.html" %}
+{% block page_title %}Armor{% endblock %}
+
+{%block findBlock%}
+
+<div class="find-query">
+    <div class="dropdown-section">
+        <label for="dropdown" class="search-label">Search:</label>
+        <select name="searchby-dropdown" id="dropdown">
+            <option value="All">All Armor</option>
+            <option value="armor_name">Armor Name</option>
+            <option value="resistance">Resistance</option>
+            <option value="bodypart">Bodypart</option>
+            <option value="level">Armor Level</option>
+        </select>
+    </div>
+    <div class="range-section">
+        <label for="range" class="search-label">Comparators:</label>
+        <select name="range" id="dropdown">
+            <option value="None">None</option>
+            <option value="$gte"> Greater or = </option>
+            <option value="$gt">Greater than</option>
+            <option value="$lte">Less or = </option>
+            <option value="$lt">Less than </option>
+        </select>
+    </div>
+</div>
+
+<input type="text" name="lookup" class="lookup">
+
+<label for="sort" class="search-label">Sort By: </label>
+<select name="sort" id="dropdown">
+    <option value="none">None</option>
+    <option value="armor_name">Armor Name</option>
+    <option value="resistance">Resistance</option>
+    <option value="bodypart">Bodypart</option>
+    <option value="level">Armor Level</option>
+</select>
+
+<label for="sad" style="margin-top: 20px;">Order: </label>
+<select name="sad" id="dropdown">
+    <option value="1">Ascending</option>
+    <option value="-1">Descending</option>
+</select>
+
+{%endblock%}
+
+{%block found%}
+{%for item in a:%}
+<div class="found-card">
+    <p><span>Armor Name:</span>{{item["armor_name"]}}</p>
+    <p><span>Resistance:</span>{{item["resistance"]}}</p>
+    <p><span>Bodypart:</span>{{item["bodypart"]}}</p>
+    <p><span>Level:</span>{{item["level"]}}</p>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_1%}
+<h1 class="subtitle">S-Tier Armor Pieces</h1>
+{%endblock%}
+{% block content_1 %}
+{%for armor in sArmor:%}
+<div class="armor-card">
+    <h1>{{armor["armor_name"]}}</h1>
+    <div class="armor-skills">
+        <h3> <div class="resistance-img stat-image"></div> Resistance:
+            {{armor["resistance"]}} </h3>
+        <h3> <div class="level-img stat-image"></div> Level: {{armor["level"]}}
+        </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_2%}
+<h1 class="subtitle">Helments / Headgear</h1>
+{%endblock%}
+{% block content_2 %}
+{%for head in hArmor:%}
+<div class="armor-card">
+    <h1>{{head["armor_name"]}}</h1>
+    <div class="armor-skills">
+        <h3> <div class="resistance-img stat-image"></div> Resistance:
+            {{head["resistance"]}} </h3>
+        <h3> <div class="level-img stat-image"></div> Level: {{head["level"]}}
+        </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_3%}
+<h1 class="subtitle">Chestplates / Tunics</h1>
+{%endblock%}
+{% block content_3 %}
+{%for head in tArmor:%}
+<div class="armor-card">
+    <h1>{{head["armor_name"]}}</h1>
+    <div class="armor-skills">
+        <h3> <div class="resistance-img stat-image"></div> Resistance:
+            {{head["resistance"]}} </h3>
+        <h3> <div class="level-img stat-image"></div> Level: {{head["level"]}}
+        </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_4%}
+<h1 class="subtitle">Gauntlets / Gloves</h1>
+{%endblock%}
+{% block content_4 %}
+{%for head in aArmor:%}
+<div class="armor-card">
+    <h1>{{head["armor_name"]}}</h1>
+    <div class="armor-skills">
+        <h3> <div class="resistance-img stat-image"></div> Resistance:
+            {{head["resistance"]}} </h3>
+        <h3> <div class="level-img stat-image"></div> Level: {{head["level"]}}
+        </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_5%}
+<h1 class="subtitle">Leggings / Pants</h1>
+{%endblock%}
+{% block content_5 %}
+{%for head in lArmor:%}
+<div class="armor-card">
+    <h1>{{head["armor_name"]}}</h1>
+    <div class="armor-skills">
+        <h3> <div class="resistance-img stat-image"></div> Resistance:
+            {{head["resistance"]}} </h3>
+        <h3> <div class="level-img stat-image"></div> Level: {{head["level"]}}
+        </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
+{%block content_subtitle_6%}
+<h1 class="subtitle">Boots / Greaves</h1>
+{%endblock%}
+{% block content_6 %}
+{%for head in fArmor:%}
+<div class="armor-card">
+    <h1>{{head["armor_name"]}}</h1>
+    <div class="armor-skills">
+        <h3> <div class="resistance-img stat-image"></div> Resistance:
+            {{head["resistance"]}} </h3>
+        <h3> <div class="level-img stat-image"></div> Level: {{head["level"]}}
+        </h3>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+2

@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+    --text_font: "Press Start 2P", system-ui;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--text_font);
+    color: whitesmoke;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #3f3b3b;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    background-color: #3f3b3b;
+}
+
+.exit {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    border-radius: 7.5px;
+    width: 25px;
+    height: 25px;
+    background: url(../assets/exitalt_.png);
+    background-color: red;
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.chooser-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+}
+
+.collection-chooser {
+    width: calc(80%/8);
+    height: 50px;
+    background: #53338b;
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    margin: .5%;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    padding: 5%;
+}
+
+.inserting,
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    overflow: scroll;
+}
+
+.inserting-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 10%;
+}
+
+.inserting-form label {
+    text-align: left;
+    width: 100%;
+    margin-bottom: .5%;
+}
+
+.inserting-form input {
+    margin-bottom: 2%;
+    font-size: 1em;
+    color: black;
+    padding: 2%;
+    width: 100%;
+}
+
+.inserting-form input[type=submit], .confirmation input[type=submit] {
+    width: 60%;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #53338b;
+    padding: 1%;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    margin-top: 5%;
+    color: white;
+    cursor: pointer;
+}
+
+#dropdown {
+    color: black;
+    outline: none;
+    padding: 1%;
+    font-size: 1em;
+    margin-bottom: 5px;
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 2%;
+}
+
+#dropdown option {
+    color: black;
+    padding: 1%;
+    font-size: .6em;
+    margin: 5px;
+    height: fit-content;
+}
